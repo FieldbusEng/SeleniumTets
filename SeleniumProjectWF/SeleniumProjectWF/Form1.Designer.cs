@@ -42,6 +42,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textResult = new System.Windows.Forms.TextBox();
+            this.butCountry = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textUrl
@@ -111,11 +112,13 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LimeGreen;
-            this.button1.Location = new System.Drawing.Point(217, 131);
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(208, 110);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 62);
+            this.button1.Size = new System.Drawing.Size(100, 20);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Run";
+            this.button1.Text = "Browser";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -161,11 +164,26 @@
             this.textResult.Size = new System.Drawing.Size(100, 20);
             this.textResult.TabIndex = 12;
             // 
+            // butCountry
+            // 
+            this.butCountry.BackColor = System.Drawing.Color.LimeGreen;
+            this.butCountry.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.butCountry.FlatAppearance.BorderSize = 0;
+            this.butCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butCountry.Location = new System.Drawing.Point(208, 175);
+            this.butCountry.Name = "butCountry";
+            this.butCountry.Size = new System.Drawing.Size(100, 20);
+            this.butCountry.TabIndex = 14;
+            this.butCountry.Text = "Select";
+            this.butCountry.UseVisualStyleBackColor = false;
+            this.butCountry.Click += new System.EventHandler(this.butCountry_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(519, 322);
+            this.Controls.Add(this.butCountry);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textResult);
             this.Controls.Add(this.button2);
@@ -204,6 +222,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textResult;
+        private System.Windows.Forms.Button butCountry;
     }
 }
 
