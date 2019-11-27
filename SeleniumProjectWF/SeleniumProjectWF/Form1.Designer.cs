@@ -40,7 +40,6 @@
             this.buttExit = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textResult = new System.Windows.Forms.TextBox();
-            this.buttSelect = new System.Windows.Forms.Button();
             this.comboCountry = new System.Windows.Forms.ComboBox();
             this.comboLang = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -100,11 +99,11 @@
             this.buttBrowser.BackColor = System.Drawing.Color.LimeGreen;
             this.buttBrowser.FlatAppearance.BorderSize = 0;
             this.buttBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttBrowser.Location = new System.Drawing.Point(217, 108);
+            this.buttBrowser.Location = new System.Drawing.Point(213, 173);
             this.buttBrowser.Name = "buttBrowser";
             this.buttBrowser.Size = new System.Drawing.Size(100, 21);
             this.buttBrowser.TabIndex = 8;
-            this.buttBrowser.Text = "Browser";
+            this.buttBrowser.Text = "Run";
             this.buttBrowser.UseVisualStyleBackColor = false;
             this.buttBrowser.Click += new System.EventHandler(this.buttBrowser_Click);
             // 
@@ -126,9 +125,9 @@
             // 
             // buttExit
             // 
-            this.buttExit.Location = new System.Drawing.Point(353, 240);
+            this.buttExit.Location = new System.Drawing.Point(213, 240);
             this.buttExit.Name = "buttExit";
-            this.buttExit.Size = new System.Drawing.Size(139, 25);
+            this.buttExit.Size = new System.Drawing.Size(100, 25);
             this.buttExit.TabIndex = 11;
             this.buttExit.Text = "Exit";
             this.buttExit.UseVisualStyleBackColor = true;
@@ -146,23 +145,10 @@
             // textResult
             // 
             this.textResult.Location = new System.Drawing.Point(351, 176);
+            this.textResult.Multiline = true;
             this.textResult.Name = "textResult";
-            this.textResult.Size = new System.Drawing.Size(141, 20);
+            this.textResult.Size = new System.Drawing.Size(141, 89);
             this.textResult.TabIndex = 12;
-            // 
-            // buttSelect
-            // 
-            this.buttSelect.BackColor = System.Drawing.Color.LimeGreen;
-            this.buttSelect.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttSelect.FlatAppearance.BorderSize = 0;
-            this.buttSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttSelect.Location = new System.Drawing.Point(217, 175);
-            this.buttSelect.Name = "buttSelect";
-            this.buttSelect.Size = new System.Drawing.Size(100, 20);
-            this.buttSelect.TabIndex = 14;
-            this.buttSelect.Text = "Select";
-            this.buttSelect.UseVisualStyleBackColor = false;
-            this.buttSelect.Click += new System.EventHandler(this.buttSelect_Click);
             // 
             // comboCountry
             // 
@@ -187,7 +173,6 @@
             this.ClientSize = new System.Drawing.Size(519, 322);
             this.Controls.Add(this.comboLang);
             this.Controls.Add(this.comboCountry);
-            this.Controls.Add(this.buttSelect);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textResult);
             this.Controls.Add(this.buttExit);
@@ -222,7 +207,6 @@
         private System.Windows.Forms.Button buttExit;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textResult;
-        private System.Windows.Forms.Button buttSelect;
         private System.Windows.Forms.ComboBox comboCountry;
         private System.Windows.Forms.ComboBox comboLang;
     }

@@ -54,30 +54,93 @@ namespace SeleniumProjectWF
             catch (Exception ee)
              {
                MessageBox.Show("exception : " + ee);
+                Browser.Close();
                 return;
              }
 
-            Browser
-
+            // wating for all searching
+            Browser.Manage().Timeouts().ImplicitWait =TimeSpan.FromSeconds(15);
+            // can test another way to handle waiting
+            //WebDriverWait ww = new WebDriverWait(Browser, TimeSpan.FromSeconds(10));
+            //IWebElement txt = ww.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div[id='language']"));
+            
             // Language
             var findLang = Browser.FindElement(By.CssSelector("div[id='language']"));
             findLang.Click();
-            Thread.Sleep(300);
-            string langChoose = "span[data-value='" + comboLang.SelectedValue + "']";
-            var findLang1 = Browser.FindElement(By.CssSelector("label[for='ch-7']"));
-            findLang1.Click();
-            Thread.Sleep(300);
+
+            IList<IWebElement> elementsLang = Browser.FindElements(By.CssSelector("label[class='controls-checkbox']"));
+            foreach (IWebElement item in elementsLang)
+            {
+                if (item.Text.Contains(comboLang.Text))
+                {
+                    try
+                    {
+                        item.Click();
+                        break;
+                    }
+                    catch
+                    {
+                        return;
+                    }
+                    
+                    
+                }
+                else
+                {
+                    textResult.Text ="Language not found";
+                    return;
+                }
+            }
+
+            //string langChoose = "span[data-value='" + comboLang.SelectedValue + "']";
+            //var findLang1 = Browser.FindElement(By.CssSelector("label[for='ch-7']"));
+            //findLang1.Click();
+            
+            //---------------------------------------------------------------------------
 
             // Country
             var findCountry = Browser.FindElement(By.CssSelector("dd[id='country-element']"));
             findCountry.Click();
-            Thread.Sleep(300);
+            
             string countryChoose = "span[data-value='" + comboCountry.Text + "']";
             var findCountry1 = Browser.FindElement(By.CssSelector(countryChoose));
             findCountry1.Click();
+            Thread.Sleep(5000);
 
+            // Quantity of jobs
+            IList<IWebElement> elementsH3 = Browser.FindElements(By.CssSelector("h3"));
+            int countH3 = elementsH3.Count;
+            foreach (IWebElement item in elementsH3)
+            {
+                if (item.Text.Contains("jobs found"))
+                {
+                    String iitem = item.Text;
+                    char ch = ' ';
+                    String[] splitStr = iitem.Trim().Split(ch);
+                    textRealQ.Text = iitem;
+                    int vacanNumber = Convert.ToInt32(splitStr[0]);
 
+                    if (vacanNumber == Convert.ToInt32(textExpQ.Text))
+                    {
+                        textResult.Text = "Good - As expected";
+                    }
+                    else if (vacanNumber > Convert.ToInt32(textExpQ.Text))
+                    {
+                        textResult.Text = "Wrong - Real is Bigger than expected";
+                    }
+                    else if (vacanNumber < Convert.ToInt32(textExpQ.Text))
+                    {
+                        textResult.Text = "Wrong - Real is Lower than expected";
+                    }
+                    break;
 
+                }
+                                    
+                else
+                {
+                    textRealQ.Text = "not found";
+                }
+            }
 
         }
 
@@ -152,9 +215,6 @@ namespace SeleniumProjectWF
             string countryChoose = "span[data-value='" + comboCountry.Text + "']";
             var findCountry1 = Browser.FindElement(By.CssSelector(countryChoose));
             findCountry1.Click();
-            
-
-
 
         }
                
