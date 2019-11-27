@@ -38,10 +38,11 @@ namespace SeleniumProjectWF
 
         private void buttBrowser_Click(object sender, EventArgs e)
         {
-
-            if(!methodCheckTextBox())
+            buttBrowser.Visible = false;
+            if (!methodCheckTextBox())
             {
                 MessageBox.Show("Please enter Correct data");
+                buttBrowser.Visible=true;
                 return;
             }
 
@@ -55,6 +56,7 @@ namespace SeleniumProjectWF
              {
                MessageBox.Show("exception : " + ee);
                 Browser.Close();
+                buttBrowser.Visible = true;
                 return;
              }
 
@@ -63,7 +65,6 @@ namespace SeleniumProjectWF
             // can test another way to handle waiting
             //WebDriverWait ww = new WebDriverWait(Browser, TimeSpan.FromSeconds(10));
             //IWebElement txt = ww.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div[id='language']"));
-            
             // Language
             var findLang = Browser.FindElement(By.CssSelector("div[id='language']"));
             findLang.Click();
@@ -78,24 +79,22 @@ namespace SeleniumProjectWF
                         item.Click();
                         break;
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        textResult.Text = ex.ToString();
+                        buttBrowser.Visible = true;
                         return;
+
                     }
-                    
-                    
+
+
                 }
                 else
                 {
-                    textResult.Text ="Language not found";
-                    return;
+                    textResult.Text = "Language not found";
+
                 }
             }
-
-            //string langChoose = "span[data-value='" + comboLang.SelectedValue + "']";
-            //var findLang1 = Browser.FindElement(By.CssSelector("label[for='ch-7']"));
-            //findLang1.Click();
-            
             //---------------------------------------------------------------------------
 
             // Country
@@ -106,6 +105,7 @@ namespace SeleniumProjectWF
             var findCountry1 = Browser.FindElement(By.CssSelector(countryChoose));
             findCountry1.Click();
             Thread.Sleep(5000);
+            
 
             // Quantity of jobs
             IList<IWebElement> elementsH3 = Browser.FindElements(By.CssSelector("h3"));
@@ -142,6 +142,8 @@ namespace SeleniumProjectWF
                 }
             }
 
+            buttBrowser.Visible = true;
+
         }
 
         void methodInitComboBox()
@@ -150,7 +152,7 @@ namespace SeleniumProjectWF
             List<ComboClass> itemsCount = new List<ComboClass>();
             itemsCount.Add(new ComboClass() { ID = "1", Text = "Romania" });
             itemsCount.Add(new ComboClass() { ID = "2", Text = "Czech Republic" });
-            itemsCount.Add(new ComboClass() { ID = "3", Text = "Russia" });
+            itemsCount.Add(new ComboClass() { ID = "3", Text = "Russian Federation" });
             itemsCount.Add(new ComboClass() { ID = "4", Text = "Germany" });
 
             comboCountry.DataSource = itemsCount;
